@@ -89,7 +89,7 @@ def todo_list_related_project(request, slug):
 def todo_detail(request, slug):
     try:
         todo = ToDo.objects.get(slug=slug)
-    except Todo.DoesNotExist:
+    except ToDo.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
@@ -104,4 +104,4 @@ def todo_detail(request, slug):
         return Response(todoSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
         todo.delete()
-        return Response(status=status.HTTP_204_NO_CONNECT)
+        return Response(status=status.HTTP_204_NO_CONTENT)
