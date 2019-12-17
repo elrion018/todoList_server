@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ["35.194.105.204"]
 
 INSTALLED_APPS = [
     'corsheaders',
+    'todo.apps.TodoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
