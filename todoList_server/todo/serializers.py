@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from todo.models import Project, ToDo
+from todo.models import Project, ToDo, SubToDo
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -14,4 +14,13 @@ class TodoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ToDo
+        fields = '__all__'
+
+
+class SubToDoSerializer(serializers.ModelSerializer):
+
+    todo = TodoSerializer(read_only=True)
+
+    class Meta:
+        model = SubToDo
         fields = '__all__'

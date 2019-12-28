@@ -2,11 +2,11 @@ from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
-from .models import ToDo, Project
+from .models import ToDo, Project, SubToDo
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
-from todo.serializers import TodoSerializer, ProjectSerializer
+from todo.serializers import TodoSerializer, ProjectSerializer, SubToDoSerializer
 # Create your views here.
 
 
@@ -55,7 +55,6 @@ def project_detail(request, slug):
 
 @api_view(['GET', 'POST'])
 def todo_list(request):
-    print("call")
     if request.method == 'GET':
 
         todo_list = ToDo.objects.all()
@@ -75,12 +74,34 @@ def todo_list(request):
         return Response(todoSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['GET', 'POST'])
+def subtodo_list(reqeust):
+    if request.method == 'GET':
+
+        subtodo_list = SubToDo.objects.all()
+        subtodoSerializer = SubToDoSerializer(subtodo_list, many=True)
+
+        return Response(subtodoSerializer.data)
+
+    elif request.method == 'POST':
+        todo = ToDo.objects.get(slug=request.data['slug'])
+        subtodoSerializer = SubToDoSerializer(data=request.data)
+        if subtodoSerializer.is_valid():
+            subtodo = subtodoSerializer.save()
+            subtodo.todo = todo
+            subtodo.save()
+            return_serializer = SubToDoSerializer(subtodo)
+            return Response(return_serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(subtodoSerializer.errors, status=status.HTTP_400_BAD_REQUEST))
+
+
 @api_view(['GET'])
 def todo_list_related_project(request, slug):
     if request.method == 'GET':
-        project = Project.objects.get(slug=slug)
-        todo_list = project.todo_set.all()
-        todoSerializer = TodoSerializer(todo_list, many=True)
+        project=Project.objects.get(slug = slug)
+        todo_list=project.todo_set.all()
+        todoSerializer=TodoSerializer(todo_list, many = True)
 
         return Response(todoSerializer.data)
 
@@ -88,20 +109,20 @@ def todo_list_related_project(request, slug):
 @api_view(['GET', 'PUT', 'DELETE'])
 def todo_detail(request, slug):
     try:
-        todo = ToDo.objects.get(slug=slug)
+        todo=ToDo.objects.get(slug = slug)
     except ToDo.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        return Response(status = status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        todoSerializer = TodoSerializer(todo)
+        todoSerializer=TodoSerializer(todo)
         return Response(todoSerializer.data)
 
     elif request.method == 'PUT':
-        todoSerializer = TodoSerializer(todo, data=request.data)
+        todoSerializer=TodoSerializer(todo, data = request.data)
         if todoSerializer.is_valid():
             todoSerializer.save()
             return Response(todoSerializer.data)
-        return Response(todoSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(todoSerializer.errors, status = status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
         todo.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status = status.HTTP_204_NO_CONTENT)
