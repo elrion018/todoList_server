@@ -115,7 +115,7 @@ def subtodo_detail(request, slug):
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
         subtodoSerializer = SubToDoSerializer(subtodo)
-        return Response(SubToDoSerializer.data)
+        return Response(subtodoSerializer.data)
 
     elif request.method == 'PUT':
         subtodoSerializer = SubToDoSerializer(subtodo, data=request.data)

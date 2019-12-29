@@ -10,5 +10,6 @@ urlpatterns = [
     path('todo/<int:slug>', views.todo_detail, name='todo_detail'),
     path('todo/related_project/<int:slug>',
          views.todo_list_related_project, name="todo_list_related_project"),
-    path('subtodo', views.subtodo_list, name="todo_list")
+    path('subtodo', views.subtodo_list, name="todo_list"),
+    path('subtodo/<int:slug>', views.subtodo_detail, name='subtodo_detail')
 ]
