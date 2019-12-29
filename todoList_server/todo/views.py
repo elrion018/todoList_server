@@ -75,7 +75,7 @@ def todo_list(request):
 
 
 @api_view(['GET', 'POST'])
-def subtodo_list(reqeust):
+def subtodo_list(request):
     if request.method == 'GET':
 
         subtodo_list = SubToDo.objects.all()
@@ -84,7 +84,7 @@ def subtodo_list(reqeust):
         return Response(subtodoSerializer.data)
 
     elif request.method == 'POST':
-        todo = ToDo.objects.get(slug=request.data['slug'])
+        todo = ToDo.objects.get(slug=request.data['todo_id'])
         subtodoSerializer = SubToDoSerializer(data=request.data)
         if subtodoSerializer.is_valid():
             subtodo = subtodoSerializer.save()

@@ -26,7 +26,7 @@ class ToDo(models.Model):
 class SubToDo(models.Model):
     slug = models.AutoField(primary_key=True, help_text='PK AutoIncrement')
     todo = models.ForeignKey(
-        ToDo, on_delete=models.CASCADE, null=False, blank=False)
+        ToDo, on_delete=models.CASCADE, null=True, blank=False)
     subtodo_text = models.CharField(max_length=200, blank=False)
 
     def __str__(self):
