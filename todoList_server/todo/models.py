@@ -28,6 +28,7 @@ class SubToDo(models.Model):
     todo = models.ForeignKey(
         ToDo, on_delete=models.CASCADE, null=True, blank=False)
     subtodo_text = models.CharField(max_length=200, blank=False)
+    goal_date = models.DateTimeField(blank=False, null=True)
 
     def __str__(self):
         return self.subtodo_text
