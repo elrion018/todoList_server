@@ -74,28 +74,6 @@ def todo_list(request):
         return Response(todoSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'POST'])
-def subtodo_list(request):
-    if request.method == 'GET':
-
-        subtodo_list = SubToDo.objects.all()
-        subtodoSerializer = SubToDoSerializer(subtodo_list, many=True)
-
-        return Response(subtodoSerializer.data)
-
-    elif request.method == 'POST':
-        todo = ToDo.objects.get(slug=request.data['todo_id'])
-        subtodoSerializer = SubToDoSerializer(data=request.data)
-        if subtodoSerializer.is_valid():
-            subtodo = subtodoSerializer.save()
-            subtodo.todo = todo
-            subtodo.save()
-            return_serializer = SubToDoSerializer(subtodo)
-            return Response(return_serializer.data, status=status.HTTP_201_CREATED)
-
-        return Response(subtodoSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
 @api_view(['GET'])
 def todo_list_related_project(request, slug):
     if request.method == 'GET':
@@ -126,3 +104,47 @@ def todo_detail(request, slug):
     elif request.method == 'DELETE':
         todo.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def subtodo_detail(request, slug):
+    try:
+        subtodo = SubToDo.objects.get(slug=slug)
+
+    except SubToDo.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        subtodoSerializer = SubToDoSerializer(subtodo)
+        return Response(SubToDoSerializer.data)
+
+    elif request.method == 'PUT':
+        subtodoSerializer = SubToDoSerializer(subtodo, data=request.data)
+        if subtodoSerializer.is_valid():
+            subtodoSerializer.save()
+            return Response(subtodoSerializer.data)
+        return Response(subtodoSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        subtodo.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET', 'POST'])
+def subtodo_list(request):
+    if request.method == 'GET':
+
+        subtodo_list = SubToDo.objects.all()
+        subtodoSerializer = SubToDoSerializer(subtodo_list, many=True)
+
+        return Response(subtodoSerializer.data)
+
+    elif request.method == 'POST':
+        todo = ToDo.objects.get(slug=request.data['todo_id'])
+        subtodoSerializer = SubToDoSerializer(data=request.data)
+        if subtodoSerializer.is_valid():
+            subtodo = subtodoSerializer.save()
+            subtodo.todo = todo
+            subtodo.save()
+            return_serializer = SubToDoSerializer(subtodo)
+            return Response(return_serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(subtodoSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
