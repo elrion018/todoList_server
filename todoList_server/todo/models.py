@@ -18,6 +18,7 @@ class ToDo(models.Model):
         Project, on_delete=models.CASCADE, null=True, blank=False)
     todo_text = models.CharField(max_length=200, blank=False, null=True)
     goal_date = models.DateTimeField(blank=False, null=True)
+    done = models.BooleanField(default=False)
 
     def __str__(self):
         return self.todo_text
@@ -29,6 +30,7 @@ class SubToDo(models.Model):
         ToDo, on_delete=models.CASCADE, null=True, blank=False)
     subtodo_text = models.CharField(max_length=200, blank=False)
     goal_date = models.DateTimeField(blank=False, null=True)
+    done = models.BooleanField(default=False)
 
     def __str__(self):
         return self.subtodo_text
