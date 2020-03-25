@@ -28,7 +28,7 @@ class SubToDo(models.Model):
     slug = models.AutoField(primary_key=True, help_text='PK AutoIncrement')
     todo = models.ForeignKey(
         ToDo, on_delete=models.CASCADE, null=True, blank=False)
-    subtodo_text = models.CharField(max_length=200, blank=False)
+    subtodo_text = models.CharField(max_length=200, blank=False, null=True)
     goal_date = models.DateTimeField(blank=False, null=True)
     done = models.BooleanField(default=False)
 
