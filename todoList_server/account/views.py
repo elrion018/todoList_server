@@ -5,13 +5,16 @@ from django.http import JsonResponse
 from .models import Account
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.csrf import ensure_csrf_cookie
+from rest_framework.decorators import api_view
 
 
 # Create your views here.
-class SignUpView(View):
-    @csrf_exempt
-    @ensure_csrf_cookie
-    def post(self, request):
+
+@csrf_exempt
+@ensure_csrf_cookie
+@api_view(['GET', 'POST'])
+def signUp(request):
+    if request.method == "POST":
         data = json.loads(request.data)
         Account(
             email=data['email'],
@@ -21,10 +24,11 @@ class SignUpView(View):
         return JsonResponse({'message': '회원가입 완료'}, status=200)
 
 
-class SignInView(View):
-    @csrf_exempt
-    @ensure_csrf_cookie
-    def post(self, request):
+@csrf_exempt
+@ensure_csrf_cookie
+@api_view(['GET', 'POST'])
+def signIn(request):
+    if request.method == "POST":
         data = json.loads(request.data)
 
         if Account.objects.filter(email=data['email']).exists():
