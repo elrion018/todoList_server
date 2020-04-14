@@ -12,7 +12,7 @@ class SignUpView(View):
     @csrf_exempt
     @ensure_csrf_cookie
     def post(self, request):
-        data = request.data
+        data = json.loads(request.data)
         Account(
             email=data['email'],
             password=data['password']
@@ -25,7 +25,7 @@ class SignInView(View):
     @csrf_exempt
     @ensure_csrf_cookie
     def post(self, request):
-        data = request.data
+        data = json.loads(request.data)
 
         if Account.objects.filter(email=data['email']).exists():
             user = Account.objects.get(email=data['email'])
