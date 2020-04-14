@@ -3,10 +3,12 @@ import json
 from django.views import View
 from django.http import JsonResponse
 from .models import Account
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
 class SignUpView(View):
+    @csrf_exempt
     def post(self, request):
         data = request.data
         Account(
@@ -18,6 +20,7 @@ class SignUpView(View):
 
 
 class SignInView(View):
+    @csrf_exempt
     def post(self, request):
         data = request.data
 
