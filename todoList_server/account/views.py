@@ -10,8 +10,6 @@ from rest_framework.decorators import api_view
 
 # Create your views here.
 
-@csrf_exempt
-@ensure_csrf_cookie
 @api_view(['GET', 'POST'])
 def signUp(request):
     if request.method == "POST":
@@ -24,8 +22,8 @@ def signUp(request):
         return JsonResponse({'message': '회원가입 완료'}, status=200)
 
 
-@csrf_exempt
-@ensure_csrf_cookie
+# @csrf_exempt
+# @ensure_csrf_cookie
 @api_view(['GET', 'POST'])
 def signIn(request):
     if request.method == "POST":
