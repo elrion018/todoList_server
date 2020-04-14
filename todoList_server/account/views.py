@@ -13,7 +13,7 @@ from rest_framework.decorators import api_view
 @api_view(['GET', 'POST'])
 def signUp(request):
     if request.method == "POST":
-        data = request.body
+        data = request.data
         Account(
             email=data['email'],
             password=data['password']
@@ -27,7 +27,7 @@ def signUp(request):
 @api_view(['GET', 'POST'])
 def signIn(request):
     if request.method == "POST":
-        data = request.body
+        data = request.data
 
         if Account.objects.filter(email=data['email']).exists():
             user = Account.objects.get(email=data['email'])
