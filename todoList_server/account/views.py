@@ -6,7 +6,6 @@ from rest_framework.decorators import api_view
 from todoList_server.settings import SECRET_KEY
 import bcrypt
 import jwt
-
 # Create your views here.
 
 
@@ -21,8 +20,8 @@ def signUp(request):
             # 비밀번호 암호화
             password = data['password'].encode(
                 'utf-8')  # 입력된 패스워드 바이트로 인코딩
-            password_crypt = bcrpty.hashpw(
-                password, bcrpty.gensalt())  # 암호화된 비밀번호 생성
+            password_crypt = bcrypt.hashpw(
+                password, bcrypt.gensalt())  # 암호화된 비밀번호 생성
             password_crypt = password_crypt.decode(
                 'utf-8')  # DB에 저장할 수 있는 유니코드 문자열 형태로 디코딩
             Account(
