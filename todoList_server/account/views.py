@@ -1,39 +1,66 @@
 from django.shortcuts import render
-import json
 from django.views import View
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from .models import Account
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.csrf import ensure_csrf_cookie
 from rest_framework.decorators import api_view
-
+from todoList_server.settings import SECRET_KEY
+import bcrypt
+import jwt
 
 # Create your views here.
+
 
 @api_view(['GET', 'POST'])
 def signUp(request):
     if request.method == "POST":
         data = request.data
-        Account(
-            email=data['email'],
-            password=data['password']
-        ).save()
+        try:
+            if Account.objects.filter(email=data['email']).exists():
+                return HttpResponse(status=400)
 
-        return JsonResponse({'message': '회원가입 완료'}, status=200)
+                # 비밀번호 암호화
+                password = data['password'].encode(
+                    'utf-8')  # 입력된 패스워드 바이트로 인코딩
+                password_crypt = bcrpty.hashpw(
+                    password, bcrpty.gensalt())  # 암호화된 비밀번호 생성
+                password_crypt = password_crypt.decode(
+                    'utf-8')  # DB에 저장할 수 있는 유니코드 문자열 형태로 디코딩
+                Account(
+                    email=data['email'],
+                    password=password_crypt
+
+                ).save()
+            return HttpResponse(status=200)
+        except KeyError:
+            return JsonResponse({"message": "Invalid"}, status=400)
 
 
-# @csrf_exempt
-# @ensure_csrf_cookie
 @api_view(['GET', 'POST'])
 def signIn(request):
     if request.method == "POST":
         data = request.data
+        try:
+            if Account.objects.filter(email=data['email']).exists():
+                user = Account.objects.get(email=data['email'])
 
-        if Account.objects.filter(email=data['email']).exists():
-            user = Account.objects.get(email=data['email'])
-            if user.password == data['password']:
-                return JsonResponse({'message': f'{user.email}님 로그인 성공!'}, status=200)
-            else:
-                return JsonResponse({'message': '비밀번호가 틀렸어요'}, status=200)
+                # 비밀번호 확인.
+                if bcrypt.checkpw(data['password'].encode('utf-8'), user.password.encode('utf-8')):
+                    token = jwt.encode(
+                        {'email': data['email']}, SECRET_KEY, algorithm="HS256")
+                    token = token.decode('utf-8')
+                    return JsonResponse({"token": token}, status=200)
+                else:
+                    return HttpResponse(status=401)
+            return HttpResponse(status=400)
+        except KeyError:
+            return JsonResponse({"message": "Invalid"}, status=400)
 
-        return JsonResponse({'message': '등록되지 않은 이메일입니다.'}, status=200)
+
+@api_view(['POST'])
+def tokenCheck(request):
+    data = request.data
+    user_token_info = jwt.decode(data['token'], SECRET_KEY, algorithms='HS256')
+    if Account.objects.filter(email=user_token_info['email']).exists():
+        return HttpResponse(status=200)
+
+    return HttpResponse(status=403)
