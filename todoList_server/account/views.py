@@ -18,18 +18,18 @@ def signUp(request):
             if Account.objects.filter(email=data['email']).exists():
                 return JsonResponse({"message": "user already exists"}, status=200)
 
-                # 비밀번호 암호화
-                password = data['password'].encode(
-                    'utf-8')  # 입력된 패스워드 바이트로 인코딩
-                password_crypt = bcrpty.hashpw(
-                    password, bcrpty.gensalt())  # 암호화된 비밀번호 생성
-                password_crypt = password_crypt.decode(
-                    'utf-8')  # DB에 저장할 수 있는 유니코드 문자열 형태로 디코딩
-                Account(
-                    email=data['email'],
-                    password=password_crypt
+            # 비밀번호 암호화
+            password = data['password'].encode(
+                'utf-8')  # 입력된 패스워드 바이트로 인코딩
+            password_crypt = bcrpty.hashpw(
+                password, bcrpty.gensalt())  # 암호화된 비밀번호 생성
+            password_crypt = password_crypt.decode(
+                'utf-8')  # DB에 저장할 수 있는 유니코드 문자열 형태로 디코딩
+            Account(
+                email=data['email'],
+                password=password_crypt
 
-                ).save()
+            ).save()
             return JsonResponse({"message": "making a user"}, status=200)
         except KeyError:
             return JsonResponse({"message": "Invalid"}, status=400)
