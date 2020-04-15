@@ -16,7 +16,7 @@ def signUp(request):
         data = request.data
         try:
             if Account.objects.filter(email=data['email']).exists():
-                return HttpResponse(status=400)
+                return JsonResponse({"message": "user already exists"}, status=200)
 
                 # 비밀번호 암호화
                 password = data['password'].encode(
@@ -30,7 +30,7 @@ def signUp(request):
                     password=password_crypt
 
                 ).save()
-            return HttpResponse(status=200)
+            return JsonResponse({"message": "making a user"}, status=200)
         except KeyError:
             return JsonResponse({"message": "Invalid"}, status=400)
 
@@ -50,8 +50,8 @@ def signIn(request):
                     token = token.decode('utf-8')
                     return JsonResponse({"token": token}, status=200)
                 else:
-                    return HttpResponse(status=401)
-            return HttpResponse(status=400)
+                    return JsonResponse({"message": "Invalid password"}, status=401)
+            return JsonResponse({"message": "no user exists"}, status=400)
         except KeyError:
             return JsonResponse({"message": "Invalid"}, status=400)
 
@@ -61,6 +61,6 @@ def tokenCheck(request):
     data = request.data
     user_token_info = jwt.decode(data['token'], SECRET_KEY, algorithms='HS256')
     if Account.objects.filter(email=user_token_info['email']).exists():
-        return HttpResponse(status=200)
+        return JsonResponse({"message": "success"}, status=200)
 
-    return HttpResponse(status=403)
+    return JsonResponse({"message": "fail"}, status=403)
