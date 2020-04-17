@@ -39,7 +39,7 @@ def signIn(request):
     if request.method == "POST":
         data = request.data
         try:
-            if Account.objttects.filter(email=data['email']).exists():
+            if Account.objects.filter(email=data['email']).exists():
                 user = Account.objects.get(email=data['email'])
 
                 # 비밀번호 확인.
