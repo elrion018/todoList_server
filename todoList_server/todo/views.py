@@ -14,7 +14,7 @@ from todo.serializers import TodoSerializer, ProjectSerializer, SubToDoSerialize
 def project_list(request):
 
     if request.method == 'GET':
-        project_list = Project.objects.filter(email=request.data['email'])
+        project_list = Project.objects.all()
         projectSerializer = ProjectSerializer(project_list, many=True)
 
         return Response(projectSerializer.data)
@@ -27,6 +27,15 @@ def project_list(request):
             return Response(projectSerializer.data, status=status.HTTP_201_CREATED)
 
         return Response(projectSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def project_list_related_email(request):
+    if request.method == 'POST':
+        project_list = Project.objects.filter(email=request.data['email'])
+        projectSerializer = ProjectSerializer(project_list, many=True)
+
+        return Response(projectSerializer.data)
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
