@@ -14,7 +14,7 @@ from todo.serializers import TodoSerializer, ProjectSerializer, SubToDoSerialize
 def project_list(request):
 
     if request.method == 'GET':
-        project_list = Project.objects.all()
+        project_list = Project.objects.filter(email=request.data['email'])
         projectSerializer = ProjectSerializer(project_list, many=True)
 
         return Response(projectSerializer.data)
