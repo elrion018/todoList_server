@@ -35,7 +35,7 @@ def project_list_related_email(request):
         # project_list = Project.objects.filter(email=request.data['email'])
         # projectSerializer = ProjectSerializer(project_list, many=True)
 
-        return Response(request.body)
+        return Response(request.headers['Authorization'])
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
