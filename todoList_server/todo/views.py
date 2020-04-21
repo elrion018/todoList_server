@@ -34,14 +34,8 @@ def project_list(request):
 @api_view(['POST'])
 def project_list_related_email(request):
     if request.method == 'POST':
-        data = request.data
-        user_token_info = jwt.decode(
-            data['token'], SECRET_KEY, algorithms='HS256')
-
-    # project_list = Project.objects.filter(email=request.data['email'])
-    # projectSerializer = ProjectSerializer(project_list, many=True)
-
-    return Response(user_token_info['email'])
+        token = request.META.get('HTTP_AUTHORIZATION', " ")
+    return Response(token)
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
