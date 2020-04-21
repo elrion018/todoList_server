@@ -32,10 +32,10 @@ def project_list(request):
 @api_view(['POST'])
 def project_list_related_email(request):
     if request.method == 'POST':
-        project_list = Project.objects.filter(email=request.data['email'])
-        projectSerializer = ProjectSerializer(project_list, many=True)
+        # project_list = Project.objects.filter(email=request.data['email'])
+        # projectSerializer = ProjectSerializer(project_list, many=True)
 
-        return Response(projectSerializer.data)
+        return Response(request.data)
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
