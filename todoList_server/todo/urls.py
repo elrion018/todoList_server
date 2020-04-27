@@ -8,6 +8,7 @@ urlpatterns = [
     path('project/email', views.project_list_related_email, name='project_email'),
     path('project/<int:slug>', views.project_detail, name='project_detail'),
     path('todo', views.todo_list, name="todo_list"),
+    path('todo/email', views.todo_list_related_project_email, name="todo_email"),
     path('todo/<int:slug>', views.todo_detail, name='todo_detail'),
     path('todo/related_project/<int:slug>',
          views.todo_list_related_project, name="todo_list_related_project"),
