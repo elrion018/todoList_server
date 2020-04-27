@@ -179,6 +179,18 @@ def subtodo_list(request):
 
 
 @api_view(["POST"])
+def todo_list_related_project_email(request):
+    if request.method == 'POST':
+        token = request.META.get('HTTP_AUTHORIZATION', " ")
+        user_token_info = jwt.decode(
+            token, SECRET_KEY, algorithms='HS256')
+        if Account.objects.filter(email=user_token_info['email']).exists():
+            todo_list = ToDo.objects.filter(email=user_token_info['email'])
+            todoSerializer = TodoSerializer(todo_list, many=True)
+    return Response(todoSerializer.data)
+
+
+@api_view(["POST"])
 def subtodo_list_related_project_email(request):
     if request.method == 'POST':
         token = request.META.get('HTTP_AUTHORIZATION', " ")
@@ -187,6 +199,5 @@ def subtodo_list_related_project_email(request):
         if Account.objects.filter(email=user_token_info['email']).exists():
             subtodo_list = SubToDo.objects.filter(
                 email=user_token_info['email'])
-
-            subtodoSerializer = SubToDoSerializer(todo_list, many=True)
+            subtodoSerializer = SubToDoSerializer(subtodo_list, many=True)
     return Response(subtodoSerializer.data)
