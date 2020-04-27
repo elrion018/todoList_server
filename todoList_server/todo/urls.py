@@ -13,5 +13,7 @@ urlpatterns = [
     path('todo/related_project/<int:slug>',
          views.todo_list_related_project, name="todo_list_related_project"),
     path('subtodo', views.subtodo_list, name="todo_list"),
+    path('subtodo/email', views.subtodo_list_related_project_email,
+         name="subtodo_email"),
     path('subtodo/<int:slug>', views.subtodo_detail, name='subtodo_detail')
 ]

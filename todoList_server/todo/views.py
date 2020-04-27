@@ -176,3 +176,16 @@ def subtodo_list(request):
             return Response(return_serializer.data, status=status.HTTP_201_CREATED)
 
         return Response(subtodoSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+def subtodo_list_related_project_email(request):
+    if request.method == 'POST':
+        token = request.META.get('HTTP_AUTHORIZATION', " ")
+        user_token_info = jwt.decode(
+            token, SECRET_KEY, algorithms='HS256')
+        if Account.objects.filter(email=user_token_info['email']).exists():
+            subtodo_list = SubToDo.objects.filter(
+                email=user_token_info['email'])
+
+            subtodoSerializer = SubToDoSerializer(todo_list, many=True)
+    return Response(todoSerializer.data)
