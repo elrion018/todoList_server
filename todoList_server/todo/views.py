@@ -178,6 +178,7 @@ def subtodo_list(request):
         return Response(subtodoSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(["POST"])
 def subtodo_list_related_project_email(request):
     if request.method == 'POST':
         token = request.META.get('HTTP_AUTHORIZATION', " ")
