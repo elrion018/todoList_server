@@ -189,4 +189,4 @@ def subtodo_list_related_project_email(request):
                 email=user_token_info['email'])
 
             subtodoSerializer = SubToDoSerializer(todo_list, many=True)
-    return Response(todoSerializer.data)
+    return Response(subtodoSerializer.data)
