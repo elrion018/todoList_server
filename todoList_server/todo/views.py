@@ -3,6 +3,7 @@ from django.template import loader
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from .models import ToDo, Project, SubToDo
+from account.models import Account
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
