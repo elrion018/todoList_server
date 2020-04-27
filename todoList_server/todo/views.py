@@ -35,6 +35,12 @@ def project_list(request):
 def project_list_related_email(request):
     if request.method == 'POST':
         token = request.META.get('HTTP_AUTHORIZATION', " ")
+        user_token_info = jwt.decode(
+            data['token'], SECRET_KEY, algorithms='HS256')
+        if Account.objects.filter(email=user_token_info['email']).exists():
+            project_list = Project.objects.filter(
+                email=user_token_info['email'])
+            projectSerializer = ProjectSerializer(project_list, many=True)
     return Response(token)
 
 
