@@ -11,6 +11,7 @@ from todo.serializers import TodoSerializer, ProjectSerializer, SubToDoSerialize
 from todoList_server.settings import SECRET_KEY
 import jwt
 import json
+from django.http import QueryDict
 # Create your views here.
 
 
