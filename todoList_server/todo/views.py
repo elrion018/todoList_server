@@ -30,7 +30,7 @@ def project_list(request):
         elif request.method == 'POST':
             temp = QueryDict(request.data, mutable=True)
 
-            temp.update({'email': user_token_info['email']})
+            temp.update({'email': str(user_token_info['email'])})
             projectSerializer = ProjectSerializer(data=temp)
             if projectSerializer.is_valid():
                 projectSerializer.save()
