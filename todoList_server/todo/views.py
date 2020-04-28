@@ -28,16 +28,14 @@ def project_list(request):
             return Response(projectSerializer.data)
 
         elif request.method == 'POST':
-            temp = request.data.dict()
 
-            temp['email'] = user_token_info['email']
-            modified_data = QueryDict('', mutable=True)
-            modified_data.update(temp)
-            projectSerializer = ProjectSerializer(data=modified_data)
+            projectSerializer = ProjectSerializer(data=request.data)
             if projectSerializer.is_valid():
-                projectSerializer.save()
-
-                return Response(modified_data, status=status.HTTP_201_CREATED)
+                project = projectSerializer.save()
+                project.email = user_token_info['email']
+                project.save()
+                return_serializer = ProjectSerializer(project)
+                return Response(return_serializer.data, status=status.HTTP_201_CREATED)
 
             return Response(projectSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -102,6 +100,7 @@ def todo_list(request):
             if todoSerializer.is_valid():
                 todo = todoSerializer.save()
                 todo.project = project
+                todo.email = user_token_info['email']
                 todo.save()
                 return_serializer = TodoSerializer(todo)
                 return Response(return_serializer.data, status=status.HTTP_201_CREATED)
@@ -206,6 +205,7 @@ def subtodo_list(request):
             if subtodoSerializer.is_valid():
                 subtodo = subtodoSerializer.save()
                 subtodo.todo = todo
+                subtodo.email = user_token_info['email']
                 subtodo.save()
                 return_serializer = SubToDoSerializer(subtodo)
                 return Response(return_serializer.data, status=status.HTTP_201_CREATED)
