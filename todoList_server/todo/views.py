@@ -30,11 +30,11 @@ def project_list(request):
             temp = json.loads(request.data)
 
             temp['email'] = user_token_info['email']
-            projectSerializer = ProjectSerializer(data=temp)
+            projectSerializer = ProjectSerializer(data=json.dumps(temp))
             if projectSerializer.is_valid():
                 projectSerializer.save()
 
-                return Response(temp, status=status.HTTP_201_CREATED)
+                return Response(json.dumps(temp), status=status.HTTP_201_CREATED)
 
             return Response(projectSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
