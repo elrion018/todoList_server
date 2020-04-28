@@ -26,12 +26,13 @@ def project_list(request):
             return Response(projectSerializer.data)
 
         elif request.method == 'POST':
-            request.data['email'] = user_token_info['email']
-            projectSerializer = ProjectSerializer(data=request.data)
+            temp = request.data
+            temp['email'] = user_token_info['email']
+            projectSerializer = ProjectSerializer(data=temp)
             if projectSerializer.is_valid():
                 projectSerializer.save()
 
-                return Response(request.data, status=status.HTTP_201_CREATED)
+                return Response(temp, status=status.HTTP_201_CREATED)
 
             return Response(projectSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
