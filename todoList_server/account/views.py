@@ -57,9 +57,11 @@ def signIn(request):
 
 @api_view(['POST'])
 def tokenCheck(request):
-    data = request.data
-    user_token_info = jwt.decode(data['token'], SECRET_KEY, algorithms='HS256')
-    if Account.objects.filter(email=user_token_info['email']).exists():
-        return JsonResponse({"message": "success"}, status=200)
+    if request.method == "POST":
+        token = request.META.get('HTTP_AUTHORIZATION', " ")
+        user_token_info = jwt.decode(
+            token, SECRET_KEY, algorithms='HS256')
+        if Account.objects.filter(email=user_token_info['email']).exists():
+            return JsonResponse({"message": "success"}, status=200)
 
     return JsonResponse({"message": "fail"}, status=403)
