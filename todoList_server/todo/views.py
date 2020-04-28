@@ -10,6 +10,7 @@ from rest_framework import status
 from todo.serializers import TodoSerializer, ProjectSerializer, SubToDoSerializer
 from todoList_server.settings import SECRET_KEY
 import jwt
+import json
 # Create your views here.
 
 
@@ -26,8 +27,9 @@ def project_list(request):
             return Response(projectSerializer.data)
 
         elif request.method == 'POST':
-            temp = request.data
-            temp.email = user_token_info['email']
+            temp = json.loads(request.data)
+
+            temp['email'] = user_token_info['email']
             projectSerializer = ProjectSerializer(data=temp)
             if projectSerializer.is_valid():
                 projectSerializer.save()
