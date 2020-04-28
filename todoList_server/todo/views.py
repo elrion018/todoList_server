@@ -30,7 +30,7 @@ def project_list(request):
             if projectSerializer.is_valid():
                 projectSerializer.save()
 
-                return Response(projectSerializer.data, status=status.HTTP_201_CREATED)
+                return Response(request.data, status=status.HTTP_201_CREATED)
 
             return Response(projectSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
