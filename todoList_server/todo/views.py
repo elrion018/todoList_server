@@ -27,7 +27,7 @@ def project_list(request):
 
         elif request.method == 'POST':
             temp = request.data
-            temp['email'] = user_token_info['email']
+            temp.email = user_token_info['email']
             projectSerializer = ProjectSerializer(data=temp)
             if projectSerializer.is_valid():
                 projectSerializer.save()
