@@ -28,14 +28,16 @@ def project_list(request):
             return Response(projectSerializer.data)
 
         elif request.method == 'POST':
-            temp = QueryDict(request.data, mutable=True)
+            temp = request.data.dict()
 
-            temp.update({'email': str(user_token_info['email'])})
-            projectSerializer = ProjectSerializer(data=temp)
+            temp['email'] = user_token_info['email']
+            modified_data = QueryDict('', mutable=True)
+            modified_data.update(temp)
+            projectSerializer = ProjectSerializer(data=modified_data)
             if projectSerializer.is_valid():
                 projectSerializer.save()
 
-                return Response(temp, status=status.HTTP_201_CREATED)
+                return Response(modified_data, status=status.HTTP_201_CREATED)
 
             return Response(projectSerializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
