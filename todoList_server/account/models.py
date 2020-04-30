@@ -6,6 +6,7 @@ class Account(models.Model):
     password = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    push_token = models.CharField(max_length=200)
 
     class Meta:
         db_table = "account"

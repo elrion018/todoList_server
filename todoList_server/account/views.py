@@ -26,7 +26,8 @@ def signUp(request):
                 'utf-8')  # DB에 저장할 수 있는 유니코드 문자열 형태로 디코딩
             Account(
                 email=data['email'],
-                password=password_crypt
+                password=password_crypt,
+                push_token=data['push_token']
 
             ).save()
             return JsonResponse({"message": "making a user"}, status=200)
