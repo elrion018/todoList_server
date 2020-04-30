@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CRONJOBS = [('*/5 * * * *', 'todo.cron.push_messaging')]
+CRONJOBS = [('* * * * *', 'todo.cron.push_messaging')]
 
 CORS_ORIGIN_ALLOW_ALL = True
 
