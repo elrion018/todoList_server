@@ -12,7 +12,15 @@ from todoList_server.settings import SECRET_KEY
 import jwt
 import json
 from django.http import QueryDict
+import datetime
 # Create your views here.
+
+
+@api_view(['GET'])
+def push_messaging():
+    todo = ToDo.object.filter(goal_date=str(
+        datetime.datetime.now())[:10]+" 00:00:00.000000")
+    return Response(todo)
 
 
 @api_view(['GET', 'POST'])

@@ -5,6 +5,7 @@ from . import views
 app_name = 'todo'
 urlpatterns = [
     path('project', views.project_list, name='project_list'),
+    path('test', views.push_messaging)
     path('project/email', views.project_list_related_email, name='project_email'),
     path('project/<int:slug>', views.project_detail, name='project_detail'),
     path('todo', views.todo_list, name="todo_list"),
