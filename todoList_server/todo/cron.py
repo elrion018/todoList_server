@@ -10,8 +10,8 @@ logger = logging.getLogger(__name__)
 def push_messaging():
     todo = ToDo.object.filter(goal_date=str(
         datetime.datetime.now())[:10]+" 00:00:00.000000")
-    logger.debug("test")
-    return print(todo)
+    print(logger)
+    print("test")
 # for _ in todo:
 #     push_service = FCMNotification(
 #         api_key="AAAAMZoXqpo:APA91bH-R5caFaI4FF4dcm9dE-LYGyOw0uzdl3Ww3Oi7tmU6-Kf9i9AGE2rm3ERv0C7vR4J3FtlMqGVqxBrEymWZCHJJ6_VUoO8VBe3XL_zO9wb9T4gxuNMnryj5fcaYMXgXb-Cjy5fH")
