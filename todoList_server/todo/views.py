@@ -18,8 +18,9 @@ import datetime
 
 @api_view(['GET'])
 def push_messaging(request):
-    todo = ToDo.objects.filter(goal_date=str(
+    todo_list = ToDo.objects.filter(goal_date=str(
         datetime.datetime.now())[:10]+" 00:00:00.000000")
+    todoSerializer = TodoSerializer(todo_list, many=True)
     return Response(todo)
 
 
